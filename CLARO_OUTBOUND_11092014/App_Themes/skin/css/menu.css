@@ -1,0 +1,66 @@
+﻿.menu1
+{
+    border-radius:2pt;
+    background-color:#404040;
+    font-weight:bold;
+    }        
+.level1
+{
+    border-radius: 2pt;
+    font-size: 9pt;
+    color: white;
+    min-width: 120px;
+    height: 35px;
+    background-color: #0B447D;
+    padding-left: 3pt;
+    padding-right: 3pt;
+}
+
+.level1 a
+{
+    background-image:none;
+    background-color:transparent;
+    text-shadow: 0pt 0pt 0pt silver;
+    }
+    
+.level1 a:hover
+{
+    text-shadow: 0pt 1pt 0pt silver;
+    }
+    
+.level2
+{
+    font-size: 9pt;
+    color:#404040;
+    height:35px;
+    margin: 1pt 1pt 1pt 1pt;
+    border-bottom:solid 1pt whitesmoke;
+    border-right:solid 1pt whitesmoke;
+    border-left:solid 5pt tomato;
+    padding-left:3pt;
+    padding-right:3pt;
+    margin:0pt 0pt 0pt 0pt;
+}
+
+.level2 a
+{
+    background-image:none;
+    background-color:transparent;
+    outline:none;
+    }
+            
+.level2 a:hover{ color:Navy; text-decoration:underline;}
+        
+
+.hoverstyle
+{
+    background:white;
+    text-shadow: 0pt 1pt 0pt gainsboro;
+    color:#404040;
+}
+.selectedstyle
+{
+    background-color: #FC422E;
+    text-shadow: 0pt 1pt 0pt darkred;
+    color: white;
+}

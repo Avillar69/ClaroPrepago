@@ -1,0 +1,293 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeFile="Site.Master.vb" Inherits="Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head id="Head1" runat="server">
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="css/estilo.css" rel="stylesheet" type="text/css" />
+    <link href="css/login.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="pic/peru.ico" type="image/png" />
+    <link href="css/estilo.css" rel="stylesheet" type="text/css" />
+    <script src="jquery_smoothness/js/jquery-1.9.1.js" type="text/javascript"></script>
+    <link href="jquery_smoothness/css/smoothness/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css" />
+    <script src="jquery_smoothness/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+
+    <title></title>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True">
+        </asp:ScriptManager>
+    </div>
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    REPORTES CLARO OUTBOUND</h1>
+            </div>
+            <div class="loginDisplay">
+                [
+                <asp:LinkButton ID="lnkSalir" runat="server" Text=" Salir " PostBackUrl="~/inicio.aspx"
+                    Enabled="false" />
+                ]
+            </div>
+            <div class="clear hideSkiplink" style="text-align: left">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" IncludeStyleBlock="true"
+                    Orientation="Horizontal" OnMenuItemClick="NavigationMenu_MenuItemClick" StaticPopOutImageUrl="~/img/divisor.gif"
+                    StaticSubAdminienuIndent="10px">
+                    <Items>
+                        <asp:MenuItem Text="CLARO OUTBOUND" Value="CARGAR BASE">
+                            <asp:MenuItem NavigateUrl="~/rep/rep_porta.aspx" Text="Claro Portabilidad" Value="Claro Portabilidad">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Claro Cancelaciones" Value="Claro Cancelaciones">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_cancel.aspx" Text="Reportes" 
+                                    Value="Reportes"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_cancel_consulta_telef.aspx" 
+                                    Text="Consultar Telefono" Value="Consultar Telefono"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Claro Migraciones" Value="Claro Migraciones">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_migra.aspx" Text="Reportes" 
+                                    Value="Reportes"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_migra_consulta_telef.aspx" 
+                                    Text="Consultar Telefono" Value="Consultar Telefono"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/rep_claro_encuesta.aspx" Text="Claro Encuestas"
+                                Value="Claro Encuestas"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/rep_debito_automatico.aspx" Text="Debito Automatico"
+                                Value="Debito Automatico"></asp:MenuItem>
+                            <asp:MenuItem Text="Claro DTH" Value="Claro DTH">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_dth.aspx" Text="Claro DTH Postpago" Value="Claro DTH">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/det_dth.aspx" Text="Claro DTH Postpago Detalle"
+                                    Value="Claro DTH Detalle"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_recupero_tfi_postpago.aspx" Text="Recupero TFI Postpago"
+                                    Value="Recupero TFI Postpago"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="TV Recupero" Value="TV Recupero">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_tvRecupero1.aspx" Text="TV Recupero Out 1" Value="TV Recupero Out 1">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_tvRecupero2.aspx" Text="TV Recupero Out 2" Value="TV Recupero Out 2">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_tvRecupero3.aspx" Text="TV Recupero Out 3" Value="TV Recupero Out 3">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_tvRecupero_all.aspx" Text="TV Recupero Out Todos"
+                                    Value="TV Recupero Out Todos"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_encuestas_prepago.aspx" Text="Encuesta" 
+                                    Value="Encuesta"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="TvSat" Value="TvSat">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_tvsat_resumen_llamadas_totales.aspx" Text="TvSat Resumen Llamadas Totales"
+                                    Value="TvSat Resumen Llamadas Totales"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_tvsat_resumen_llamadas_unicas.aspx" Text="TvSat Resumen Llamadas Unicas"
+                                    Value="TvSat Resumen Llamadas Unicas"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="3 Play" Value="3 Play">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_3play_hfc.aspx" Text="3 Play HFC" Value="3 Play HFC">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_3play_dth.aspx" Text="3 Play DTH" Value="3 Play DTH">
+                                </asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_3play_hfc_portados.aspx" 
+                                    Text="3 Play Portados" Value="3 Play Portados"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_hfc_guia_interactiva.aspx" 
+                                    Text="HFC Guia Interactiva" Value="HFC Guia Interactiva"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Recupero" Value="Recupero">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_recupero_electronico_valido.aspx" Text="Recupero Electronico"
+                                    Value="Recupero Electronico"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_recupero_email_grabaciones.aspx" Text="Recupero Email Grabaciones"
+                                    Value="Recupero Email Grabaciones"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_afilia_ce_valido.aspx" Text="Afiliacion de CE"
+                                    Value="Afiliacion de CE"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_recupero_fisica.aspx" Text="Recupero fisico"
+                                    Value="Recupero fisico"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_ranking_recupero_out.aspx" Text="Ranking" 
+                                    Value="Ranking"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/rep/cargas_recupero.aspx" Text="Obtener cargas Recupero" 
+                                    Value="Obtener cargas Recupero"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Seguimiento clientes top"
+                                Value="Seguimiento clientes top">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_seg_clientes_top.aspx" Text="Reporte" 
+                                    Value="Reporte"></asp:MenuItem>
+                                <asp:MenuItem Text="Agente / Tiempo Gestión" Value="Agente / Tiempo Gestión" 
+                                    NavigateUrl="~/rep/repTiempoAgente.aspx">
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+							
+							<asp:MenuItem Text="Negociación de Deuda clientes top"
+                                Value="Negociación de Deuda clientes top">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_Neg_Clie_Top.aspx" Text="Reporte" 
+                                    Value="Reporte"></asp:MenuItem>
+                            </asp:MenuItem>
+							
+                            <asp:MenuItem Text="Seguimiento Clientes Especiales"
+                                Value="Seguimiento Clientes Especiales">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_Seg_Clie_Esp.aspx" Text="Reporte" 
+                                    Value="Reporte"></asp:MenuItem>
+                            </asp:MenuItem>
+
+                            <asp:MenuItem 
+                                Text="Gestion Preventiva" Value="Gestion Preventiva">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_gestion_prev.aspx" Text="Reporte" 
+                                    Value="Reporte"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/rep_ranking_gest_prev_out.aspx" Text="Ranking" 
+                                    Value="Ranking"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/cargas_gest_prev.aspx" Text="Obtener Cargas" 
+                                    Value="Obtener Cargas"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem 
+                                Text="Garantia de Servicio" Value="Garantia de Servicio">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_garantia_servicio.aspx" Text="Reporte" 
+                                    Value="Reporte"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/rep_tiempo_agente.aspx" Text="Tiempo Agente" 
+                                Value="Tiempo Agente"></asp:MenuItem>
+                            <asp:MenuItem Text="Gestión Informativa" Value="Gestión Informativa">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_gestion_info_num_pago.aspx" 
+                                    Text="Reporte" Value="Reporte"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Claro Validaciones" Value="Claro Validaciones">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_validaciones.aspx" Text="Reporte" 
+                                    Value="Reporte"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Claro OntopPreventiva" Value="Claro OntopPreventiva">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_ontop_preventiva.aspx" 
+                                    Text="Reporte" Value="Reporte"></asp:MenuItem>
+                            </asp:MenuItem>
+							 <asp:MenuItem Text="Claro 193" Value="Claro 193">
+                                <asp:MenuItem NavigateUrl="~/rep/rep_claro_193.aspx" 
+                                    Text="Reporte" Value="Reporte"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/rep_claro_OldSitting.aspx" Text="Claro OldSitting" Value="Claro OldSitting"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/rep_claro_encpre.aspx" Text="Encuesta Prepago" Value="Encuesta Prepago"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/rep_actualizar_direcciones.aspx" Text="Actualizar Direcciones" Value="Actualizar Direcciones"></asp:MenuItem>
+                        </asp:MenuItem>
+
+                        <asp:MenuItem Text="CARGAR BASE" Value="CARGAR BASE">
+                            <asp:MenuItem NavigateUrl="~/rep/cargar.aspx" Text="OUTBOUND PORTABILIDAD" Value="Portabilidad">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargarCancelaciones.aspx" Text="OUTBOUND CANCELACIONES"
+                                Value="OUTBOUND CANCELACIONES"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargarMigraciones.aspx" Text="OUTBOUND MIGRACIONES"
+                                Value="OUTBOUND MIGRACIONES"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargar_recupero_fisica.aspx" Text="OUTBOUND RECUPERO FISICA"
+                                Value="OUTBOUND RECUPERO FISICA"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargar_recupero_email.aspx" Text="OUTBOUND RECUPERO ELECTRONICO"
+                                Value="OUTBOUND RECUPERO ELECTRONICO"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargar_afiliacion_ce.aspx" Text="OUTBOUND AFILIACION DE CORREO"
+                                Value="OUTBOUND AFILIACION DE CORREO"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargar_recupero_email_grab.aspx" Text="OUTBOUND RECUPERO EMAIL GRABACIONES"
+                                Value="OUTBOUND RECUPERO EMAIL GRABACIONES"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargar_3Play.aspx" Text="OUTBOUND 3PLAY HFC"
+                                Value="OUTBOUND 3PLAY HFC"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargar_3Play.aspx" 
+                                Text="OUTBOUND 3 PLAY HFC PORTADOS" Value="OUTBOUND 3 PLAY HFC PORTADOS">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargar_3Play_DTH.aspx" 
+                                Text="OUTBOUND 3PLAY DTH" Value="OUTBOUND 3PLAY DTH"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargar_recupero_TFI_post.aspx" 
+                                Text="OUTBOUND RECUPERO TFI POST" Value="OUTBOUND RECUPERO TFI POST">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargaPresence1.aspx" 
+                                Text="OUTBOUND TV RECUPERO" Value="OUTBOUND TV RECUPERO"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargar_gestion_preven.aspx" 
+                                Text="OUTBOUND GEST PREVENTIVA (178)" Value="OUTBOUND GEST PREVENTIVA(178)">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/cargarEncuestas.aspx" 
+                                Text="OUTBOUND ENCUESTAS" Value="OUTBOUND ENCUESTAS"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/debitoAutomatico.aspx" 
+                                Text="DEBITO AUTOMATICO (170)" Value="DEBITO AUTOMATICO (170)"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/outClaroOutbound.aspx" 
+                                Text="OUTBOUND OLDSITTING (179)" Value="OUTBOUND OLDSITTING (179)"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/outGestionInformativa.aspx" 
+                                Text="OUTBOUND GESTION_INFORMATIVA (189)" Value="OUTBOUND GESTION_INFORMATIVA (189)"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/outSegClientes.aspx" 
+                                Text="OUTBOUND SEG CLIENTES TOP (2013)" Value="OUTBOUND SEG CLIENTES TOP (2013)"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/outSegClientesEspeciales.aspx" 
+                                Text="OUTBOUND SEG CLIENTES ESPECIALES (2018)" Value="OUTBOUND SEG CLIENTES ESPECIALES (2018)"></asp:MenuItem>
+
+                        </asp:MenuItem>
+
+                        <asp:MenuItem Text="CLARO RECUPERO OUT" Value="CLARO RECUPERO OUT">
+                            <asp:MenuItem NavigateUrl="~/rep/rep_recupero_multiplica.aspx" Text="MULTIPLICA"
+                                Value="MULTIPLICA"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/rep_recupero_llamanomas.aspx" Text="LLAMANOMAS"
+                                Value="LLAMANOMAS"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/rep_recupero_recargas.aspx" Text="INCREMENTAR RECARGAS"
+                                Value="INCREMENTAR RECARGAS"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="BLOQUEO DE REGISTROS"
+                            Value="BLOQUEO DE REGISTROS">
+                            <asp:MenuItem NavigateUrl="~/rep/bloqueos_tv_recupero.aspx" 
+                                Text="BLOQUEO TV RECUPERO" Value="BLOQUEO TV RECUPERO"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/bloqueos_claro_3play_hfc.aspx" 
+                                Text="CLARO 3 PLAY HFC" Value="CLARO 3 PLAY HFC"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/bloqueos_claro_3play_dth.aspx" 
+                                Text="CLARO 3 PLAY DTH" Value="CLARO 3 PLAY DTH"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="CLARO OUT TV RETENCIONES" Value="CLARO OUT TV RETENCIONES">
+                            <asp:MenuItem NavigateUrl="~/rep/rep_tv_retenciones.aspx" Text="Reporte" 
+                                Value="Reporte"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="RENOVACIONES" Value="RENOVACIONES">
+                            <asp:MenuItem Text="Reporte Cliente" Value="Reporte Cliente" 
+                                NavigateUrl="~/rep/rep_renovaciones.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Reporte General" Value="Reporte General" 
+                                NavigateUrl="~/rep/rep_general_renovaciones.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Reporte Delivery" 
+                                Value="Reporte Delivery" 
+                                NavigateUrl="~/rep/rep_general_renovaciones_ventas.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Ranking" Value="Ranking" NavigateUrl="~/rep/rep_renovaciones_ranking.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Actualizar Scripting" Value="Actualizar Scripting" 
+                                NavigateUrl="~/rep/rep_renovacion_consulta.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Sumarizado" Value="Sumarizado" 
+                                NavigateUrl="~/rep/rep_renovaciones_sumarizado.aspx"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/rep_renovaciones_catalogo.aspx" 
+                                Text="Catalogo" Value="Catalogo"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/ReporteSumarizadoRenovaciones.aspx" 
+                                Text="Sumarizado Renovaciones" Value="Sumarizado Renovaciones"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/rep/Reporte_general_delivery.aspx" 
+                                Text="Reporte General de Ventas" Value="Reporte General de Ventas"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="MIGRACIONES" Value="MIGRACIONES">
+                            <asp:MenuItem Text="Reporte Cliente" Value="Reporte Cliente" 
+                                NavigateUrl="~/rep/rep_migraciones.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Reporte General" Value="Reporte General" 
+                                NavigateUrl="~/rep/rep_general_migraciones.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Reporte General de Ventas" 
+                                Value="Reporte General de Ventas" 
+                                NavigateUrl="~/rep/rep_general_migraciones_ventas.aspx"></asp:MenuItem>                            
+                            <asp:MenuItem Text="Actualizar Scripting" Value="Actualizar Scripting" 
+                                NavigateUrl="~/rep/rep_migraciones_consulta.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/rep/ReporteSumarizadoMigraciones.aspx" 
+                                Text="Sumarizado Migraciones" Value="Sumarizado Migraciones"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="CONSOLIDADOS DYN" Value="CONSOLIDADOS DYN">
+                            <asp:MenuItem Text="Renovaciones y  Migraciones" Value="Renovaciones y  Migraciones" 
+                                NavigateUrl="~/rep/ReporteMigrayReno.aspx"></asp:MenuItem>                            
+                            </asp:MenuItem>
+                        
+                        <asp:MenuItem Text="ENCUESTA" Value="ENCUESTA">
+                            <asp:MenuItem NavigateUrl="~/rep/rep_encuesta.aspx" Text="Encuesta" 
+                                Value="Encuesta"></asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    </form>
+</body>
+</html>
